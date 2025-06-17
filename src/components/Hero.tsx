@@ -105,14 +105,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="w-full max-w-2xl h-96 md:h-[500px] lg:h-[600px] relative">
-              <spline-viewer 
-                url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"
-                style={{ 
-                  width: '100%', 
-                  height: '100%',
-                  background: 'transparent'
-                }}
-              />
+              <spline-viewer url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode" />
             </div>
           </motion.div>
 
