@@ -113,14 +113,6 @@ const Hero = () => {
                   background: 'transparent'
                 }}
               />
-              <style jsx>{`
-                spline-viewer::part(logo) {
-                  display: none !important;
-                }
-                spline-viewer {
-                  --spline-watermark-display: none;
-                }
-              `}</style>
             </div>
           </motion.div>
 
