@@ -97,11 +97,26 @@ const Hero = () => {
             </motion.a>
           </motion.div>
 
+          {/* 3D Spline Model */}
+          <motion.div
+            className="mt-12 flex justify-center"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            <div className="w-full max-w-2xl h-96 md:h-[500px] lg:h-[600px]">
+              <spline-viewer 
+                url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"
+                style={{ width: '100%', height: '100%' }}
+              />
+            </div>
+          </motion.div>
+
           <motion.div
             className="mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
           >
             <motion.a
               href="#about"
