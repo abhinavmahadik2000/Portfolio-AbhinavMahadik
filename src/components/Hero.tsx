@@ -5,7 +5,7 @@ import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -104,11 +104,23 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className="w-full max-w-2xl h-96 md:h-[500px] lg:h-[600px]">
+            <div className="w-full max-w-2xl h-96 md:h-[500px] lg:h-[600px] relative">
               <spline-viewer 
                 url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"
-                style={{ width: '100%', height: '100%' }}
+                style={{ 
+                  width: '100%', 
+                  height: '100%',
+                  background: 'transparent'
+                }}
               />
+              <style jsx>{`
+                spline-viewer::part(logo) {
+                  display: none !important;
+                }
+                spline-viewer {
+                  --spline-watermark-display: none;
+                }
+              `}</style>
             </div>
           </motion.div>
 

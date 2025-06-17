@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -100,4 +101,22 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Hide Spline watermark */
+spline-viewer::part(logo) {
+  display: none !important;
+}
+
+spline-viewer {
+  --spline-watermark-display: none !important;
+}
+
+/* Additional CSS to ensure watermark is hidden */
+spline-viewer .spline-watermark,
+spline-viewer [class*="watermark"],
+spline-viewer [id*="watermark"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
