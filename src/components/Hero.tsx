@@ -1,26 +1,9 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 
 const Hero = () => {
-  const [displayedText, setDisplayedText] = useState('');
-  const fullText = 'Software Engineer • Data Scientist • Machine Learning Engineer';
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const typewriterInterval = setInterval(() => {
-      if (currentIndex <= fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex));
-        currentIndex++;
-      } else {
-        clearInterval(typewriterInterval);
-      }
-    }, 50);
-
-    return () => clearInterval(typewriterInterval);
-  }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
       {/* Animated Background Elements */}
@@ -70,13 +53,12 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto h-8"
+            className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {displayedText}
-            <span className="animate-pulse">|</span>
+            Software Engineer & Data Scientist specializing in AI/ML, Full-Stack Development, and Advanced Analytics
           </motion.p>
 
           <motion.div
@@ -94,7 +76,7 @@ const Hero = () => {
               <Mail className="w-6 h-6 text-white" />
             </motion.a>
             <motion.a
-              href="https://www.linkedin.com/in/abhinavmahadik"
+              href="https://linkedin.com/in/abhinavamahadik"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
@@ -104,7 +86,7 @@ const Hero = () => {
               <Linkedin className="w-6 h-6 text-white" />
             </motion.a>
             <motion.a
-              href="https://github.com/abhinavmahadik2000"
+              href="https://github.com/abhinavm"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 bg-white/10 rounded-full backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
@@ -122,17 +104,8 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            <div className="w-full max-w-2xl h-96 md:h-[500px] lg:h-[600px] relative flex items-center justify-center">
-              <div className="w-full h-full max-w-[90vw] max-h-[50vh] md:max-h-[60vh] lg:max-h-[70vh]">
-                <spline-viewer 
-                  url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"
-                  style={{ 
-                    width: '100%', 
-                    height: '100%',
-                    background: 'transparent'
-                  }}
-                />
-              </div>
+            <div className="w-full max-w-2xl h-96 md:h-[500px] lg:h-[600px] relative">
+              <spline-viewer url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode" />
             </div>
           </motion.div>
 

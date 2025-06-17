@@ -11,7 +11,7 @@ import Navbar from '../components/Navbar';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-200 via-pink-200 to-blue-200">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Navbar />
       <Hero />
       <About />
