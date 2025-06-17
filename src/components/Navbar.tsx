@@ -33,14 +33,7 @@ const Navbar = () => {
       transition={{ duration: 0.6 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          <motion.div
-            className="text-2xl font-bold text-white"
-            whileHover={{ scale: 1.05 }}
-          >
-            Abhinav Dilip Mahadik
-          </motion.div>
-
+        <div className="flex justify-center md:justify-end items-center py-4">
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {navItems.map((item) => (

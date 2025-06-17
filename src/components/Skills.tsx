@@ -12,22 +12,18 @@ const Skills = () => {
     {
       title: "Languages",
       skills: ["Python", "JavaScript", "SQL", "C", "C++", "Java", "Scala", "R"],
-      color: "from-blue-500 to-cyan-500"
     },
     {
       title: "AI/ML & Data",
       skills: ["PyTorch", "TensorFlow", "Scikit-Learn", "LangChain", "OpenAI APIs", "RAG", "NumPy", "Pandas"],
-      color: "from-purple-500 to-pink-500"
     },
     {
       title: "Web Technologies",
       skills: ["React", "Django", "Flask", "Node.js", "HTML/CSS", "Tableau", "Power BI"],
-      color: "from-green-500 to-teal-500"
     },
     {
       title: "Databases & Tools",
       skills: ["PostgreSQL", "MongoDB", "Git", "GitHub Actions", "Linux", "Bash", "Docker"],
-      color: "from-orange-500 to-red-500"
     }
   ];
 
@@ -55,9 +51,6 @@ const Skills = () => {
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
             >
-              <div className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-lg mb-4 flex items-center justify-center`}>
-                <div className="w-6 h-6 bg-white/20 rounded"></div>
-              </div>
               <h3 className="text-xl font-bold text-white mb-4">{category.title}</h3>
               <div className="space-y-2">
                 {category.skills.map((skill, skillIndex) => (
