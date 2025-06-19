@@ -12,8 +12,6 @@ import Navbar from '../components/Navbar';
 const Index = () => {
   return (
     <div className="min-h-screen relative overflow-hidden" style={{
-      background: '#CC95C0',
-      background: '-webkit-linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)',
       background: 'linear-gradient(to right, #7AA1D2, #DBD4B4, #CC95C0)'
     }}>
       {/* Animated floating elements */}

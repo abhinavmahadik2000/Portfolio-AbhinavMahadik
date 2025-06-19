@@ -130,10 +130,9 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
           >
             <div className="w-full max-w-2xl mx-auto relative">
-              <div className="aspect-square max-h-[500px] lg:max-h-[600px] relative overflow-hidden rounded-2xl">
+              <div className="aspect-square max-h-[500px] lg:max-h-[600px] relative overflow-hidden rounded-2xl flex items-center justify-center">
                 <spline-viewer 
                   url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"
-                  className="w-full h-full"
                   style={{
                     width: '100%',
                     height: '100%',
