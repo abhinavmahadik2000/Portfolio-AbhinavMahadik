@@ -46,15 +46,28 @@ const Experience = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Work <span className="text-purple-400">Experience</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            whileHover={{ scale: 1.02 }}
+          >
+            Work <span className="text-slate-700">Experience</span>
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 96 } : { width: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          />
         </motion.div>
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-gradient-to-b from-purple-400 to-pink-400"></div>
+          <motion.div 
+            className="absolute left-4 md:left-1/2 transform md:-translate-x-px w-0.5 bg-gradient-to-b from-slate-600 to-slate-800"
+            initial={{ height: 0 }}
+            animate={isInView ? { height: '100%' } : { height: 0 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+          />
 
           {experiences.map((exp, index) => (
             <motion.div
@@ -67,22 +80,32 @@ const Experience = () => {
               }`}
             >
               {/* Timeline dot */}
-              <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full border-4 border-slate-900"></div>
+              <motion.div 
+                className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full border-4 border-white shadow-lg"
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : { scale: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.8 }}
+                whileHover={{ scale: 1.2 }}
+              />
 
               {/* Content */}
               <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                 <motion.div
-                  className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300"
-                  whileHover={{ scale: 1.02 }}
+                  className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all duration-300"
+                  whileHover={{ 
+                    scale: 1.02,
+                    y: -5,
+                    boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
+                  }}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                    <h3 className="text-xl font-bold text-white">{exp.title}</h3>
-                    <div className="flex items-center text-purple-400 text-sm mt-1 sm:mt-0">
+                    <h3 className="text-xl font-bold text-slate-800">{exp.title}</h3>
+                    <div className="flex items-center text-slate-600 text-sm mt-1 sm:mt-0">
                       <Calendar className="w-4 h-4 mr-1" />
                       {exp.period}
                     </div>
                   </div>
-                  <div className="flex items-center text-gray-300 mb-4">
+                  <div className="flex items-center text-slate-700 mb-4">
                     <MapPin className="w-4 h-4 mr-1" />
                     <span className="font-semibold">{exp.company}</span>
                     <span className="mx-2">•</span>
@@ -90,10 +113,17 @@ const Experience = () => {
                   </div>
                   <ul className="space-y-2">
                     {exp.achievements.map((achievement, achievementIndex) => (
-                      <li key={achievementIndex} className="text-gray-300 text-sm leading-relaxed flex items-start">
-                        <span className="w-1.5 h-1.5 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <motion.li 
+                        key={achievementIndex} 
+                        className="text-slate-700 text-sm leading-relaxed flex items-start"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+                        transition={{ duration: 0.5, delay: index * 0.2 + achievementIndex * 0.1 + 1 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        <span className="w-1.5 h-1.5 bg-slate-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
                         {achievement}
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </motion.div>

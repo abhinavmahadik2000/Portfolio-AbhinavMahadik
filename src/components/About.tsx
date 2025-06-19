@@ -17,10 +17,18 @@ const About = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            About <span className="text-purple-400">Me</span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-pink-400 mx-auto"></div>
+          <motion.h2 
+            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            whileHover={{ scale: 1.02 }}
+          >
+            About <span className="text-slate-700">Me</span>
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
+            initial={{ width: 0 }}
+            animate={isInView ? { width: 96 } : { width: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -30,44 +38,65 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6"
           >
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <motion.p 
+              className="text-lg text-slate-700 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               I'm a passionate Software Engineer and Data Scientist with expertise in AI/ML, full-stack development, 
               and advanced analytics. Currently pursuing my Master's in Computer Science at the University of Texas at Arlington.
-            </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            </motion.p>
+            <motion.p 
+              className="text-lg text-slate-700 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
               With experience ranging from building predictive machine learning models to developing scalable web applications, 
               I enjoy solving complex problems and creating innovative solutions that make a real impact.
-            </p>
-            <p className="text-lg text-gray-300 leading-relaxed">
+            </motion.p>
+            <motion.p 
+              className="text-lg text-slate-700 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
               My expertise spans across Python, JavaScript, SQL, and various AI/ML frameworks including PyTorch, TensorFlow, 
               and Scikit-Learn. I'm also proficient in modern web technologies like React, Node.js, and cloud platforms.
-            </p>
+            </motion.p>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+            className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 hover:border-white/50 transition-all duration-300"
+            whileHover={{ 
+              scale: 1.02,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
+            }}
           >
-            <h3 className="text-2xl font-bold text-white mb-6">Quick Facts</h3>
+            <h3 className="text-2xl font-bold text-slate-800 mb-6">Quick Facts</h3>
             <div className="space-y-4">
-              <div className="flex justify-between">
-                <span className="text-gray-300">Location</span>
-                <span className="text-white">Arlington, TX</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Education</span>
-                <span className="text-white">UT Arlington (MS CS)</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Experience</span>
-                <span className="text-white">3+ Years</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-gray-300">Specialization</span>
-                <span className="text-white">AI/ML & Full-Stack</span>
-              </div>
+              {[
+                { label: 'Location', value: 'Arlington, TX' },
+                { label: 'Education', value: 'UT Arlington (MS CS)' },
+                { label: 'Experience', value: '3+ Years' },
+                { label: 'Specialization', value: 'AI/ML & Full-Stack' }
+              ].map((fact, index) => (
+                <motion.div 
+                  key={fact.label}
+                  className="flex justify-between"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="text-slate-600">{fact.label}</span>
+                  <span className="text-slate-800 font-medium">{fact.value}</span>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         </div>
