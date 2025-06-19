@@ -37,33 +37,29 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-12 px-4 sm:px-6 lg:px-8" ref={ref}>
-      <div className="max-w-6xl mx-auto">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-10"
+          className="text-center mb-16"
         >
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-slate-800 mb-4"
+            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
             whileHover={{ scale: 1.02 }}
-            animate={{
-              textShadow: ["0 0 0px rgba(0,0,0,0)", "0 0 15px rgba(0,0,0,0.1)", "0 0 0px rgba(0,0,0,0)"]
-            }}
-            transition={{ duration: 4, repeat: Infinity }}
           >
             Featured <span className="text-slate-700">Projects</span>
           </motion.h2>
           <motion.div 
-            className="w-20 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
+            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
             initial={{ width: 0 }}
-            animate={isInView ? { width: 80 } : { width: 0 }}
+            animate={isInView ? { width: 96 } : { width: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -73,57 +69,31 @@ const Projects = () => {
               className="group relative"
             >
               <motion.div 
-                className="bg-white/20 backdrop-blur-sm rounded-2xl p-5 border border-white/30 hover:border-white/50 transition-all duration-300 h-full"
+                className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all duration-300 h-full"
                 whileHover={{ 
                   scale: 1.02,
-                  y: -8,
-                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-                  rotateX: 2
+                  y: -5,
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
                 }}
-                animate={{
-                  borderColor: ["rgba(255,255,255,0.3)", "rgba(255,255,255,0.4)", "rgba(255,255,255,0.3)"]
-                }}
-                transition={{ duration: 3, repeat: Infinity, delay: index * 0.5 }}
               >
                 <motion.div 
-                  className={`w-10 h-10 bg-gradient-to-r ${project.gradient} rounded-lg mb-3 flex items-center justify-center shadow-lg`}
-                  whileHover={{ 
-                    scale: 1.15, 
-                    rotate: 12,
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.2)"
-                  }}
-                  animate={{
-                    rotate: [0, 2, -2, 0]
-                  }}
-                  transition={{ 
-                    rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                  }}
+                  className={`w-12 h-12 bg-gradient-to-r ${project.gradient} rounded-lg mb-4 flex items-center justify-center shadow-lg`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <div className="w-5 h-5 bg-white/30 rounded"></div>
+                  <div className="w-6 h-6 bg-white/30 rounded"></div>
                 </motion.div>
                 
-                <motion.h3 
-                  className="text-lg font-bold text-slate-800 mb-2"
-                  whileHover={{ color: "#334155" }}
-                >
-                  {project.title}
-                </motion.h3>
-                <motion.p 
-                  className="text-slate-700 text-sm leading-relaxed mb-4"
-                  whileHover={{ color: "#475569" }}
-                >
-                  {project.description}
-                </motion.p>
+                <h3 className="text-xl font-bold text-slate-800 mb-3">{project.title}</h3>
+                <p className="text-slate-700 text-sm leading-relaxed mb-6">{project.description}</p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-6">
                   {project.technologies.map((tech, techIndex) => (
                     <motion.span
                       key={techIndex}
-                      className="text-xs px-2 py-1 bg-white/30 rounded-full text-slate-700 border border-white/40 hover:border-white/60 transition-all duration-200"
+                      className="text-xs px-3 py-1 bg-white/30 rounded-full text-slate-700 border border-white/40 hover:border-white/60 transition-all duration-200"
                       whileHover={{ 
                         scale: 1.05,
-                        backgroundColor: "rgba(255,255,255,0.4)",
-                        y: -2
+                        backgroundColor: "rgba(255,255,255,0.4)"
                       }}
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
@@ -134,36 +104,23 @@ const Projects = () => {
                   ))}
                 </div>
 
-                <div className="flex space-x-3">
-                  {[
-                    { icon: Github, label: "Code" },
-                    { icon: ExternalLink, label: "Demo" }
-                  ].map((btn, btnIndex) => {
-                    const IconComponent = btn.icon;
-                    return (
-                      <motion.button
-                        key={btnIndex}
-                        className="flex items-center text-slate-700 hover:text-slate-600 transition-colors duration-200 font-medium"
-                        whileHover={{ 
-                          scale: 1.05, 
-                          x: 3,
-                          color: "#334155"
-                        }}
-                        whileTap={{ scale: 0.95 }}
-                        animate={{
-                          y: [0, -1, 0]
-                        }}
-                        transition={{ 
-                          duration: 2, 
-                          repeat: Infinity, 
-                          delay: btnIndex * 0.5 
-                        }}
-                      >
-                        <IconComponent className="w-4 h-4 mr-1" />
-                        <span className="text-sm">{btn.label}</span>
-                      </motion.button>
-                    );
-                  })}
+                <div className="flex space-x-4">
+                  <motion.button
+                    className="flex items-center text-slate-700 hover:text-slate-600 transition-colors duration-200 font-medium"
+                    whileHover={{ scale: 1.05, x: 2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github className="w-4 h-4 mr-1" />
+                    <span className="text-sm">Code</span>
+                  </motion.button>
+                  <motion.button
+                    className="flex items-center text-slate-700 hover:text-slate-600 transition-colors duration-200 font-medium"
+                    whileHover={{ scale: 1.05, x: 2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-1" />
+                    <span className="text-sm">Demo</span>
+                  </motion.button>
                 </div>
               </motion.div>
             </motion.div>
