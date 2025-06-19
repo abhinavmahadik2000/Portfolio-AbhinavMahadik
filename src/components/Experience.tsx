@@ -15,25 +15,14 @@ const Experience = () => {
       company: "University of Texas at Arlington",
       location: "Arlington, TX",
       period: "July 2024 - Present",
-      achievements: [
-        "Engineered a research management web application using HTML/CSS, React featuring professor profiles, real-time research dashboards, and responsive submission tracking, serving 20+ concurrent users.",
-        "Designed SQL database, created schemas, and queries for efficient retrieval of 40+ research papers and coursework.",
-        "Structured MySQL performance backend with Flask APIs, leveraging connection pooling, normalization, and caching layers, reducing query response latency by 40%.",
-        "Optimized frontend JavaScript code using Promises and async/await, measured by Lighthouse, resulting in a 35% faster page load time."
-      ]
+      summary: "Led the development of a comprehensive research management web application using React and HTML/CSS, featuring professor profiles and real-time research dashboards that serve 20+ concurrent users. Designed and optimized SQL database schemas with MySQL backend using Flask APIs, implementing connection pooling and caching layers that reduced query response latency by 40%. Enhanced frontend performance through JavaScript optimization using Promises and async/await, achieving 35% faster page load times as measured by Lighthouse audits."
     },
     {
       title: "Data Science Intern",
       company: "Exposys Data Labs",
       location: "India",
       period: "June 2021 - September 2021",
-      achievements: [
-        "Built predictive machine learning models (K-means, Decision Trees) using scikit-learn.",
-        "Automated data workflows with intelligent ML models, increasing classification accuracy by 24% compared to baseline models.",
-        "Accelerated data analysis scripts in Python (pandas, NumPy) by implementing vectorized operations and memory-efficient joins, reducing data retrieval and visualization time.",
-        "Developed interactive data visualization tools using matplotlib and Plotly, powered by regression analysis and clustering overlays, improving strategic decision-making efficiency by 40%.",
-        "Integrated MongoDB for efficient indexed storage, achieving 50% reduced query response times, directly improving dashboard load speeds, and API responsiveness."
-      ]
+      summary: "Developed predictive machine learning models using K-means clustering and Decision Trees with scikit-learn, achieving 24% improvement in classification accuracy over baseline models. Accelerated data analysis workflows through Python optimization using pandas and NumPy with vectorized operations and memory-efficient joins. Created interactive data visualization tools using matplotlib and Plotly with regression analysis and clustering overlays, improving strategic decision-making efficiency by 40%. Integrated MongoDB with efficient indexing to reduce query response times by 50%, directly enhancing dashboard performance and API responsiveness."
     }
   ];
 
@@ -60,74 +49,48 @@ const Experience = () => {
           />
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <motion.div 
-            className="absolute left-4 md:left-1/2 transform md:-translate-x-px w-0.5 bg-gradient-to-b from-slate-600 to-slate-800"
-            initial={{ height: 0 }}
-            animate={isInView ? { height: '100%' } : { height: 0 }}
-            transition={{ duration: 1.5, delay: 0.5 }}
-          />
-
+        <div className="space-y-12">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className={`relative flex items-center mb-12 ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              }`}
+              className="relative"
             >
-              {/* Timeline dot */}
-              <motion.div 
-                className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-slate-600 to-slate-800 rounded-full border-4 border-white shadow-lg"
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : { scale: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.2 + 0.8 }}
-                whileHover={{ scale: 1.2 }}
-              />
-
-              {/* Content */}
-              <div className={`ml-12 md:ml-0 md:w-1/2 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                <motion.div
-                  className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all duration-300"
-                  whileHover={{ 
-                    scale: 1.02,
-                    y: -5,
-                    boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
-                  }}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4">
-                    <h3 className="text-xl font-bold text-slate-800">{exp.title}</h3>
-                    <div className="flex items-center text-slate-600 text-sm mt-1 sm:mt-0">
-                      <Calendar className="w-4 h-4 mr-1" />
-                      {exp.period}
+              <motion.div
+                className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 hover:border-white/50 transition-all duration-300 shadow-lg"
+                whileHover={{ 
+                  scale: 1.02,
+                  y: -5,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+                }}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 mb-2">{exp.title}</h3>
+                    <div className="flex items-center text-slate-700 mb-2">
+                      <MapPin className="w-4 h-4 mr-2" />
+                      <span className="font-semibold">{exp.company}</span>
+                      <span className="mx-2">•</span>
+                      <span>{exp.location}</span>
                     </div>
                   </div>
-                  <div className="flex items-center text-slate-700 mb-4">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    <span className="font-semibold">{exp.company}</span>
-                    <span className="mx-2">•</span>
-                    <span>{exp.location}</span>
+                  <div className="flex items-center text-slate-600 mt-2 lg:mt-0">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <span className="font-medium">{exp.period}</span>
                   </div>
-                  <ul className="space-y-2">
-                    {exp.achievements.map((achievement, achievementIndex) => (
-                      <motion.li 
-                        key={achievementIndex} 
-                        className="text-slate-700 text-sm leading-relaxed flex items-start"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                        transition={{ duration: 0.5, delay: index * 0.2 + achievementIndex * 0.1 + 1 }}
-                        whileHover={{ x: 5 }}
-                      >
-                        <span className="w-1.5 h-1.5 bg-slate-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        {achievement}
-                      </motion.li>
-                    ))}
-                  </ul>
-                </motion.div>
-              </div>
+                </div>
+                
+                <motion.p 
+                  className="text-slate-700 leading-relaxed text-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
+                >
+                  {exp.summary}
+                </motion.p>
+              </motion.div>
             </motion.div>
           ))}
         </div>
