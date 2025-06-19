@@ -3,7 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const Projects = () => {
   const ref = useRef(null);
@@ -51,12 +51,6 @@ const Projects = () => {
           >
             Featured <span className="text-slate-700">Projects</span>
           </motion.h2>
-          <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 96 } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -105,14 +99,6 @@ const Projects = () => {
                 </div>
 
                 <div className="flex space-x-4">
-                  <motion.button
-                    className="flex items-center text-slate-700 hover:text-slate-600 transition-colors duration-200 font-medium"
-                    whileHover={{ scale: 1.05, x: 2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Github className="w-4 h-4 mr-1" />
-                    <span className="text-sm">Code</span>
-                  </motion.button>
                   <motion.button
                     className="flex items-center text-slate-700 hover:text-slate-600 transition-colors duration-200 font-medium"
                     whileHover={{ scale: 1.05, x: 2 }}

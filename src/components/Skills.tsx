@@ -42,12 +42,6 @@ const Skills = () => {
           >
             Technical <span className="text-slate-700">Skills</span>
           </motion.h2>
-          <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
-            initial={{ width: 0 }}
-            animate={isInView ? { width: 96 } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

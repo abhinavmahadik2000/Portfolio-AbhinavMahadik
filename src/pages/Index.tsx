@@ -3,9 +3,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import About from '../components/About';
-import Skills from '../components/Skills';
-import Experience from '../components/Experience';
 import Projects from '../components/Projects';
+import Experience from '../components/Experience';
+import Education from '../components/Education';
+import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import Navbar from '../components/Navbar';
 
@@ -58,9 +59,10 @@ const Index = () => {
       <Navbar />
       <Hero />
       <About />
-      <Skills />
-      <Experience />
       <Projects />
+      <Experience />
+      <Education />
+      <Skills />
       <Contact />
     </div>
   );

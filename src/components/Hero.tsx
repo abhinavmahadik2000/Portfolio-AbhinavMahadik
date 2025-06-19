@@ -59,11 +59,27 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="space-y-8"
         >
+          {/* Profile Picture */}
+          <motion.div
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/30 shadow-lg">
+              <img 
+                src="/lovable-uploads/321fcf46-d500-4263-a9e3-76fa32a99f84.png" 
+                alt="Abhinav Dilip Mahadik"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </motion.div>
+
           <motion.h1
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-800 mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             <span className="bg-gradient-to-r from-slate-700 via-slate-600 to-slate-800 bg-clip-text text-transparent">
               Abhinav Dilip Mahadik
@@ -74,7 +90,7 @@ const Hero = () => {
             className="text-xl md:text-2xl text-slate-700 max-w-3xl mx-auto h-16 flex items-center justify-center"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <span className="font-medium">
               {typewriterText}
@@ -90,7 +106,7 @@ const Hero = () => {
             className="flex justify-center space-x-6 mt-8"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
           >
             <motion.a
               href="mailto:abhinavdrmahadik@gmail.com"
@@ -127,18 +143,11 @@ const Hero = () => {
             className="mt-12 flex justify-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
           >
             <div className="w-full max-w-2xl mx-auto relative">
               <div className="aspect-square max-h-[500px] lg:max-h-[600px] relative overflow-hidden rounded-2xl flex items-center justify-center">
-                <spline-viewer 
-                  url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    minHeight: '400px'
-                  }}
-                />
+                <spline-viewer url="https://prod.spline.design/a614lKfFFOZKTDOp/scene.splinecode"></spline-viewer>
               </div>
             </div>
           </motion.div>
@@ -147,7 +156,7 @@ const Hero = () => {
             className="mt-12"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
             <motion.a
               href="#about"
