@@ -14,25 +14,37 @@ const Projects = () => {
       title: "Text-to-SQL Agent",
       description: "Enhanced RAG pipeline indexing 100 documents with OpenAI Embeddings, leveraging concurrent query execution. Implemented an AI-powered SQL system handling dynamic optimization based on contextual SQL queries.",
       technologies: ["Python", "FastAPI", "Socket.IO", "OpenAI", "SQL"],
-      gradient: "from-slate-600 to-slate-800"
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
     },
     {
-      title: "Movie Recommender & Critique Agent",
-      description: "Leveraged a vector search & semantic analysis pipeline over MongoDB with 10k+ movie and user reviews. Engineered an end-to-end Python ETL pipeline, improved sentiment classification accuracy by 18%.",
-      technologies: ["Python", "LangChain", "MongoDB", "OpenAI"],
-      gradient: "from-slate-700 to-slate-600"
+      title: "Canvas Student Learning Web App",
+      description: "Established a scalable PHP backend handling 1,000+ concurrent users. Ensured data integrity with sophisticated authentication & RBAC. Integrated ReactJS with RESTful APIs, improving response times. Added real-time progress tracking & interactive assessments.",
+      technologies: ["PHP", "ReactJS", "MySQL", "REST API"],
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=200&fit=crop"
+    },
+    {
+      title: "Attendance System Using Facial Recognition",
+      description: "Engineered an AI-powered facial recognition system using HOG and deep learning, achieving 100% automation in attendance tracking. Optimized face detection with landmark estimation and affine transformations, reaching 98%+ accuracy. Developed real-time face matching using 128-dimensional feature embeddings and CNN.",
+      technologies: ["Python", "OpenCV", "Deep Learning", "CNN", "HOG"],
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=200&fit=crop"
+    },
+    {
+      title: "ReziBot: AI-Driven Resume & Cover Letter Generator",
+      description: "Developed an LLM-powered tool that tailors resumes and cover letters to job descriptions, improving personalization and ATS optimization. Engineered the system using Flask (backend) and React (frontend), integrating OpenAI's GPT models for context-aware content generation.",
+      technologies: ["React", "Flask", "OpenAI GPT", "LangChain", "Python", "NLP"],
+      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=400&h=200&fit=crop"
     },
     {
       title: "Spotify Data Pipeline",
       description: "Automated a daily Airflow DAG using Python and Selenium to ingest 30,000+ Spotify listening events into PostgreSQL. Implemented an interactive analytics dashboard using Metabase to visualize listening trends.",
       technologies: ["Python", "Airflow", "PostgreSQL", "Docker"],
-      gradient: "from-slate-600 to-slate-700"
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=200&fit=crop"
     },
     {
       title: "Customer Churn Prediction",
       description: "Developed an end-to-end machine learning pipeline using TensorFlow, preprocessing 7,000+ customer records and achieving churn prediction accuracy of 85%, improving customer retention strategies significantly.",
       technologies: ["TensorFlow", "Python", "Pandas", "SQLite", "Power BI"],
-      gradient: "from-slate-800 to-slate-600"
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop"
     }
   ];
 
@@ -71,10 +83,14 @@ const Projects = () => {
                 }}
               >
                 <motion.div 
-                  className={`w-12 h-12 bg-gradient-to-r ${project.gradient} rounded-lg mb-4 flex items-center justify-center shadow-lg`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className="w-full h-32 mb-4 rounded-lg overflow-hidden shadow-lg"
+                  whileHover={{ scale: 1.05 }}
                 >
-                  <div className="w-6 h-6 bg-white/30 rounded"></div>
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
                 </motion.div>
                 
                 <h3 className="text-xl font-bold text-slate-800 mb-3">{project.title}</h3>
