@@ -11,6 +11,7 @@ import Education from '../components/Education';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import Navbar from '../components/Navbar';
+import CursorFollower from '../components/CursorFollower';
 
 const Index = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -22,13 +23,15 @@ const Index = () => {
     <div className="min-h-screen relative overflow-hidden" style={{
       background: isDarkMode ? darkGradient : lightGradient
     }}>
+      <CursorFollower isDarkMode={isDarkMode} />
+      
       {/* Dark Mode Toggle */}
       <motion.div
         className="fixed top-4 right-4 z-50 flex items-center space-x-3 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 border border-white/30"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        style={{ marginTop: '60px' }}
+        style={{ marginTop: '80px' }}
       >
         <Sun className={`w-4 h-4 transition-colors ${isDarkMode ? 'text-gray-400' : 'text-yellow-500'}`} />
         <Switch
