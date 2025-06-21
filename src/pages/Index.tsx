@@ -28,6 +28,7 @@ const Index = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
+        style={{ marginTop: '60px' }}
       >
         <Sun className={`w-4 h-4 transition-colors ${isDarkMode ? 'text-gray-400' : 'text-yellow-500'}`} />
         <Switch
@@ -81,7 +82,7 @@ const Index = () => {
       
       <div className={isDarkMode ? 'text-gray-100' : 'text-slate-800'}>
         <Navbar isDarkMode={isDarkMode} />
-        <Hero isDarkMode={isDarkMode} />
+        <Hero />
         <About isDarkMode={isDarkMode} />
         <Projects isDarkMode={isDarkMode} />
         <Experience isDarkMode={isDarkMode} />

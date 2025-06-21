@@ -5,7 +5,11 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { GraduationCap, Calendar, MapPin } from 'lucide-react';
 
-const Education = () => {
+interface EducationProps {
+  isDarkMode: boolean;
+}
+
+const Education = ({ isDarkMode }: EducationProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -34,6 +38,13 @@ const Education = () => {
     }
   ];
 
+  const titleColor = isDarkMode ? 'text-gray-100' : 'text-slate-800';
+  const subtitleColor = isDarkMode ? 'text-gray-200' : 'text-slate-700';
+  const textColor = isDarkMode ? 'text-gray-300' : 'text-slate-700';
+  const cardBg = isDarkMode ? 'bg-gray-800/20' : 'bg-white/20';
+  const cardBorder = isDarkMode ? 'border-gray-600/30 hover:border-gray-500/50' : 'border-white/30 hover:border-white/50';
+  const gradientBg = isDarkMode ? 'bg-gradient-to-r from-gray-600 to-gray-800' : 'bg-gradient-to-r from-slate-600 to-slate-800';
+
   return (
     <section id="education" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
@@ -44,10 +55,10 @@ const Education = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            className={`text-4xl md:text-5xl font-bold ${titleColor} mb-6`}
             whileHover={{ scale: 1.02 }}
           >
-            <span className="text-slate-700">Education</span>
+            <span className={subtitleColor}>Education</span>
           </motion.h2>
         </motion.div>
 
@@ -58,7 +69,7 @@ const Education = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all duration-300"
+              className={`${cardBg} backdrop-blur-sm rounded-2xl p-6 border ${cardBorder} transition-all duration-300`}
               whileHover={{ 
                 scale: 1.02,
                 y: -5,
@@ -68,14 +79,14 @@ const Education = () => {
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div className="flex items-start space-x-4">
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-800 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0"
+                    className={`w-12 h-12 ${gradientBg} rounded-lg flex items-center justify-center shadow-lg flex-shrink-0`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
                     <GraduationCap className="w-6 h-6 text-white" />
                   </motion.div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-800">{edu.degree}</h3>
-                    <div className="flex items-center text-slate-700 mt-1">
+                    <h3 className={`text-xl font-bold ${titleColor}`}>{edu.degree}</h3>
+                    <div className={`flex items-center ${subtitleColor} mt-1`}>
                       <MapPin className="w-4 h-4 mr-1" />
                       <span className="font-semibold">{edu.school}</span>
                       <span className="mx-2">•</span>
@@ -83,7 +94,7 @@ const Education = () => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center text-slate-600 text-sm mt-2 md:mt-0">
+                <div className={`flex items-center ${isDarkMode ? 'text-gray-400' : 'text-slate-600'} text-sm mt-2 md:mt-0`}>
                   <Calendar className="w-4 h-4 mr-1" />
                   {edu.period}
                 </div>
@@ -92,13 +103,13 @@ const Education = () => {
                 {edu.details.map((detail, detailIndex) => (
                   <motion.li 
                     key={detailIndex} 
-                    className="text-slate-700 text-sm leading-relaxed flex items-start"
+                    className={`${textColor} text-sm leading-relaxed flex items-start`}
                     initial={{ opacity: 0, x: -10 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                     transition={{ duration: 0.5, delay: index * 0.2 + detailIndex * 0.1 + 0.8 }}
                     whileHover={{ x: 5 }}
                   >
-                    <span className="w-1.5 h-1.5 bg-slate-600 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                    <span className={`w-1.5 h-1.5 ${isDarkMode ? 'bg-gray-400' : 'bg-slate-600'} rounded-full mt-2 mr-3 flex-shrink-0`}></span>
                     {detail}
                   </motion.li>
                 ))}

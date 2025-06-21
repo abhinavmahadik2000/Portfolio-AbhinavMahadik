@@ -5,7 +5,11 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Mail, Linkedin, Github } from 'lucide-react';
 
-const Contact = () => {
+interface ContactProps {
+  isDarkMode: boolean;
+}
+
+const Contact = ({ isDarkMode }: ContactProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -30,6 +34,14 @@ const Contact = () => {
     }
   ];
 
+  const titleColor = isDarkMode ? 'text-gray-100' : 'text-slate-800';
+  const subtitleColor = isDarkMode ? 'text-gray-200' : 'text-slate-700';
+  const textColor = isDarkMode ? 'text-gray-300' : 'text-slate-700';
+  const cardBg = isDarkMode ? 'bg-gray-800/20' : 'bg-white/20';
+  const cardBorder = isDarkMode ? 'border-gray-600/30 hover:border-gray-500/50' : 'border-white/30 hover:border-white/50';
+  const gradientBg = isDarkMode ? 'bg-gradient-to-r from-gray-600 to-gray-800' : 'bg-gradient-to-r from-slate-600 to-slate-800';
+  const footerTextColor = isDarkMode ? 'text-gray-400' : 'text-slate-600';
+
   return (
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
@@ -40,19 +52,19 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            className={`text-4xl md:text-5xl font-bold ${titleColor} mb-6`}
             whileHover={{ scale: 1.02 }}
           >
-            Get In <span className="text-slate-700">Touch</span>
+            Get In <span className={subtitleColor}>Touch</span>
           </motion.h2>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto mb-8"
+            className={`w-24 h-1 ${gradientBg} mx-auto mb-8`}
             initial={{ width: 0 }}
             animate={isInView ? { width: 96 } : { width: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           />
           <motion.p 
-            className="text-lg text-slate-700 max-w-2xl mx-auto"
+            className={`text-lg ${textColor} max-w-2xl mx-auto`}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -77,7 +89,7 @@ const Contact = () => {
                   href={contact.link}
                   target={contact.link.startsWith('http') ? '_blank' : '_self'}
                   rel={contact.link.startsWith('http') ? 'noopener noreferrer' : ''}
-                  className="block bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all duration-300 text-center"
+                  className={`block ${cardBg} backdrop-blur-sm rounded-2xl p-6 border ${cardBorder} transition-all duration-300 text-center`}
                   whileHover={{ 
                     scale: 1.05,
                     y: -5,
@@ -86,13 +98,13 @@ const Contact = () => {
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.div 
-                    className="w-12 h-12 bg-gradient-to-r from-slate-600 to-slate-800 rounded-lg mx-auto mb-4 flex items-center justify-center shadow-lg"
+                    className={`w-12 h-12 ${gradientBg} rounded-lg mx-auto mb-4 flex items-center justify-center shadow-lg`}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
                     <IconComponent className="w-6 h-6 text-white" />
                   </motion.div>
-                  <h3 className="text-lg font-semibold text-slate-800 mb-2">{contact.label}</h3>
-                  <p className="text-slate-700 text-sm break-all">{contact.value}</p>
+                  <h3 className={`text-lg font-semibold ${titleColor} mb-2`}>{contact.label}</h3>
+                  <p className={`${textColor} text-sm break-all`}>{contact.value}</p>
                 </motion.a>
               </motion.div>
             );
@@ -107,7 +119,7 @@ const Contact = () => {
         >
           <motion.a
             href="mailto:abhinavdrmahadik@gmail.com"
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-slate-700 to-slate-800 text-white font-semibold rounded-full hover:from-slate-600 hover:to-slate-700 transition-all duration-300 shadow-lg"
+            className={`inline-flex items-center px-8 py-4 ${gradientBg} text-white font-semibold rounded-full hover:from-slate-600 hover:to-slate-700 transition-all duration-300 shadow-lg`}
             whileHover={{ 
               scale: 1.05,
               y: -2,
@@ -124,7 +136,7 @@ const Contact = () => {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-16 pt-8 border-t border-white/30 text-center text-slate-600"
+          className={`mt-16 pt-8 border-t ${isDarkMode ? 'border-gray-600/30' : 'border-white/30'} text-center ${footerTextColor}`}
         >
           <p>&copy; 2024 Abhinav Dilip Mahadik. All rights reserved.</p>
         </motion.div>

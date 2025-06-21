@@ -4,7 +4,11 @@ import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 
-const Skills = () => {
+interface SkillsProps {
+  isDarkMode: boolean;
+}
+
+const Skills = ({ isDarkMode }: SkillsProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -27,6 +31,14 @@ const Skills = () => {
     }
   ];
 
+  const titleColor = isDarkMode ? 'text-gray-100' : 'text-slate-800';
+  const subtitleColor = isDarkMode ? 'text-gray-200' : 'text-slate-700';
+  const textColor = isDarkMode ? 'text-gray-300' : 'text-slate-700';
+  const cardBg = isDarkMode ? 'bg-gray-800/20' : 'bg-white/20';
+  const cardBorder = isDarkMode ? 'border-gray-600/30 hover:border-gray-500/50' : 'border-white/30 hover:border-white/50';
+  const skillBg = isDarkMode ? 'bg-gray-700/30 hover:bg-gray-600/40' : 'bg-white/30 hover:bg-white/40';
+  const skillBorder = isDarkMode ? 'border-gray-500/40 hover:border-gray-400/60' : 'border-white/40 hover:border-white/60';
+
   return (
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
@@ -37,10 +49,10 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            className={`text-4xl md:text-5xl font-bold ${titleColor} mb-6`}
             whileHover={{ scale: 1.02 }}
           >
-            Technical <span className="text-slate-700">Skills</span>
+            Technical <span className={subtitleColor}>Skills</span>
           </motion.h2>
         </motion.div>
 
@@ -51,7 +63,7 @@ const Skills = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 border border-white/30 hover:border-white/50 transition-all duration-300 hover:shadow-lg"
+              className={`${cardBg} backdrop-blur-sm rounded-2xl p-6 border ${cardBorder} transition-all duration-300 hover:shadow-lg`}
               whileHover={{ 
                 scale: 1.02,
                 y: -5,
@@ -59,7 +71,7 @@ const Skills = () => {
               }}
             >
               <motion.h3 
-                className="text-xl font-bold text-slate-800 mb-4"
+                className={`text-xl font-bold ${titleColor} mb-4`}
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.5, delay: categoryIndex * 0.1 + 0.2 }}
@@ -73,10 +85,10 @@ const Skills = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                     transition={{ duration: 0.4, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                    className="text-slate-700 text-sm py-2 px-3 bg-white/30 rounded-full border border-white/40 hover:border-white/60 transition-all duration-200 hover:bg-white/40"
+                    className={`${textColor} text-sm py-2 px-3 ${skillBg} rounded-full border ${skillBorder} transition-all duration-200`}
                     whileHover={{ 
                       scale: 1.05,
-                      backgroundColor: "rgba(255,255,255,0.5)"
+                      backgroundColor: isDarkMode ? "rgba(75,85,99,0.5)" : "rgba(255,255,255,0.5)"
                     }}
                   >
                     {skill}

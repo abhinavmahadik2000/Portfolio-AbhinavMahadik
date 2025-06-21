@@ -5,7 +5,11 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 
-const Experience = () => {
+interface ExperienceProps {
+  isDarkMode: boolean;
+}
+
+const Experience = ({ isDarkMode }: ExperienceProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
@@ -26,6 +30,13 @@ const Experience = () => {
     }
   ];
 
+  const titleColor = isDarkMode ? 'text-gray-100' : 'text-slate-800';
+  const subtitleColor = isDarkMode ? 'text-gray-200' : 'text-slate-700';
+  const textColor = isDarkMode ? 'text-gray-300' : 'text-slate-700';
+  const cardBg = isDarkMode ? 'bg-gray-800/20' : 'bg-white/20';
+  const cardBorder = isDarkMode ? 'border-gray-600/30 hover:border-gray-500/50' : 'border-white/30 hover:border-white/50';
+  const gradientBg = isDarkMode ? 'bg-gradient-to-r from-gray-600 to-gray-800' : 'bg-gradient-to-r from-slate-600 to-slate-800';
+
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
@@ -36,13 +47,13 @@ const Experience = () => {
           className="text-center mb-16"
         >
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-slate-800 mb-6"
+            className={`text-4xl md:text-5xl font-bold ${titleColor} mb-6`}
             whileHover={{ scale: 1.02 }}
           >
-            Work <span className="text-slate-700">Experience</span>
+            Work <span className={subtitleColor}>Experience</span>
           </motion.h2>
           <motion.div 
-            className="w-24 h-1 bg-gradient-to-r from-slate-600 to-slate-800 mx-auto"
+            className={`w-24 h-1 ${gradientBg} mx-auto`}
             initial={{ width: 0 }}
             animate={isInView ? { width: 96 } : { width: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -59,7 +70,7 @@ const Experience = () => {
               className="relative"
             >
               <motion.div
-                className="bg-white/20 backdrop-blur-sm rounded-2xl p-8 border border-white/30 hover:border-white/50 transition-all duration-300 shadow-lg"
+                className={`${cardBg} backdrop-blur-sm rounded-2xl p-8 border ${cardBorder} transition-all duration-300 shadow-lg`}
                 whileHover={{ 
                   scale: 1.02,
                   y: -5,
@@ -68,22 +79,22 @@ const Experience = () => {
               >
                 <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-800 mb-2">{exp.title}</h3>
-                    <div className="flex items-center text-slate-700 mb-2">
+                    <h3 className={`text-2xl font-bold ${titleColor} mb-2`}>{exp.title}</h3>
+                    <div className={`flex items-center ${subtitleColor} mb-2`}>
                       <MapPin className="w-4 h-4 mr-2" />
                       <span className="font-semibold">{exp.company}</span>
                       <span className="mx-2">•</span>
                       <span>{exp.location}</span>
                     </div>
                   </div>
-                  <div className="flex items-center text-slate-600 mt-2 lg:mt-0">
+                  <div className={`flex items-center ${isDarkMode ? 'text-gray-400' : 'text-slate-600'} mt-2 lg:mt-0`}>
                     <Calendar className="w-4 h-4 mr-2" />
                     <span className="font-medium">{exp.period}</span>
                   </div>
                 </div>
                 
                 <motion.p 
-                  className="text-slate-700 leading-relaxed text-lg"
+                  className={`${textColor} leading-relaxed text-lg`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
