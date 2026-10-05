@@ -1,24 +1,47 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>kinetic-profile-sphere</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
-    <link rel="icon" href="/lovable-uploads/9688a88f-28d4-4c9c-bd20-ab42b2f72cda.png" type="image/png">
 
-    <meta property="og:title" content="kinetic-profile-sphere" />
-    <meta property="og:description" content="Lovable Generated Project" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>Abhinav Mahadik · Software Engineer, AI Systems</title>
+    <meta
+      name="description"
+      content="Software engineer building LLM agents and the production backends they run on. Multi-region POS, reporting and delivery infrastructure across Malaysia, Indonesia and Thailand."
+    />
+    <meta name="author" content="Abhinav Mahadik" />
+    <meta name="theme-color" content="#0b0c11" />
 
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/321fcf46-d500-4263-a9e3-76fa32a99f84.png" />
+
+    <meta property="og:title" content="Abhinav Mahadik · Software Engineer, AI Systems" />
+    <meta
+      property="og:description"
+      content="LLM agents and the production backends they run on. Multi-region POS, reporting and delivery infrastructure."
+    />
+    <meta property="og:type" content="profile" />
+    <meta property="og:image" content="/lovable-uploads/321fcf46-d500-4263-a9e3-76fa32a99f84.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.11/build/spline-viewer.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      // Resolve the theme before first paint so there is no flash.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var dark = stored ? stored === 'dark' : true;
+          document.documentElement.classList.toggle('dark', dark);
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        } catch (e) {}
+      })();
+    </script>
   </head>
 
   <body>
